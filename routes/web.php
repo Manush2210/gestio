@@ -23,6 +23,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 */
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,16 +53,6 @@ Route::get('product',[App\Http\Controllers\UploadController::class, 'index']);
 
 
 
-
-
-
-
-
-
-
-
-
-
 Auth::routes();
 
 
@@ -76,13 +67,14 @@ Route::group(['prefix' => 'home','middleware' => 'auth'], function () {
 
     //
         Route::post('setting', [App\Http\Controllers\UploadController::class, 'store']);
-        Route::get('stock', [App\Http\Controllers\HomeController::class, 'stockview'])->name('stockview');
+        //Route::get('stock', [App\Http\Controllers\HomeController::class, 'stockview'])->name('stockview');
         Route::get('finance', function () {return view('dashboard.finance');})->name('financeview');
         Route::get('task', function () {return view('dashboard.task');})->name('taskview');
         Route::get('user', function () {return view('dashboard.user');})->name('userview');
         Route::get('personnel', function () {return view('dashboard.personnel');})->name('personnelview');
         Route::get('config', function () {return view('dashboard.config');})->name('config');
-        Route::get('setting', function () {return view('dashboard.setting');})->name('setting');
+        Route::get('addproduct', function () {return view('dashboard.addproduct');})->name('addproduct');
+        Route::get('loadproduct', [ProductController::class, 'saveproduct'])->name('stockview');
 
 
 });
@@ -91,7 +83,7 @@ Route::group(['prefix' => 'home','middleware' => 'auth'], function () {
 Route::get('/logout',[App\Http\Controllers\Auth\LoginController::class, 'logout'])->name('userlogout');
 
 
-//Amin routes
+//Admin routes
 /*
 Route::get('admin/login',[App\Http\Controllers\Auth\AdminAuthController::class, 'getLogin'])->name('adminLogin');
 Route::post('admin/login', [App\Http\Controllers\Auth\AdminAuthController::class, 'postLogin'])->name('adminLoginPost');

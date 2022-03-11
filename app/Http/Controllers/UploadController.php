@@ -34,14 +34,14 @@ class UploadController extends Controller
         if ($request->hasfile('image')) 
         {
             // code...
-            $file=$request->file('image');
-            $extention = $file->getClientOriginalExtension();
-            $filename= time().'.'.$extention;
-            $file->move('storage/, $filename');
-            $product->image= $filename;
+                $file = $request->file('image');
+                $filename = $file->getClientOriginalName();
+                $path = $file->storeAs('public/', $filename);
+
+                $product->image= $filename;
         }
         $product->save();
-        return view('dashboard.setting');
+        return view('dashboard.addproduct');
     }
 
 

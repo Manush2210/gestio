@@ -63,7 +63,7 @@
 						</a>
 						</div>
 						<div class="menu-item">
-						<a href="edit_stock.html" class="menu-link">
+						<a href="{{route('addproduct')}}" class="menu-link">
 						<span class="menu-text">Editer le Stock</span>
 						</a>
 						</div>

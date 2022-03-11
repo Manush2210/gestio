@@ -34,8 +34,6 @@
 
 			<!--end btn scroll-->
 
-			@include('dashboard.theme')
-
 		</div>
 
 		<!--script-->
